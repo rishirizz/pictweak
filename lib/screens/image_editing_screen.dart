@@ -22,7 +22,9 @@ class _ImageEditingScreenState extends EditImageViewModel {
         floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.white,
           tooltip: 'Add New Text',
-          onPressed: () {},
+          onPressed: () {
+            addNewDialog(context);
+          },
           child: const Icon(
             Icons.edit,
             color: Colors.black,
