@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 
+import '../widgets/edit_image_view_model.dart';
+
 class ImageEditingScreen extends StatefulWidget {
   final String selectedImagePath;
   const ImageEditingScreen({required this.selectedImagePath, super.key});
@@ -12,7 +14,7 @@ class ImageEditingScreen extends StatefulWidget {
   State<ImageEditingScreen> createState() => _ImageEditingScreenState();
 }
 
-class _ImageEditingScreenState extends State<ImageEditingScreen> {
+class _ImageEditingScreenState extends EditImageViewModel {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
