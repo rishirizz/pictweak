@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:pictweak/models/text_info.dart';
 import 'package:pictweak/widgets/button.dart';
 
 import '../screens/image_editing_screen.dart';
 
 abstract class EditImageViewModel extends State<ImageEditingScreen> {
   TextEditingController textEditingController = TextEditingController();
+  List<TextInfo> texts = [];
+
   addNewDialog(BuildContext context) {
     showDialog(
       context: context,
@@ -31,7 +34,7 @@ abstract class EditImageViewModel extends State<ImageEditingScreen> {
             ),
             AppButton(
               onPressed: () {
-                // Navigator.pop(context);
+                addNewText(context);
               },
               color: Colors.white,
               textColor: Colors.black,
@@ -41,5 +44,23 @@ abstract class EditImageViewModel extends State<ImageEditingScreen> {
         );
       },
     );
+  }
+
+  addNewText(BuildContext context) {
+    setState(() {
+      texts.add(
+        TextInfo(
+          text: textEditingController.text,
+          left: 0,
+          top: 0,
+          color: Colors.black,
+          fontWeight: FontWeight.normal,
+          fontStyle: FontStyle.normal,
+          fontSize: 20,
+          textAlign: TextAlign.left,
+        ),
+      );
+      Navigator.pop(context);
+    });
   }
 }
