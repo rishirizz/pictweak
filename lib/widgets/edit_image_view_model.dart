@@ -1,11 +1,14 @@
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:image_gallery_saver/image_gallery_saver.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:pictweak/models/text_info.dart';
 import 'package:pictweak/widgets/button.dart';
 import 'package:screenshot/screenshot.dart';
 
 import '../screens/image_editing_screen.dart';
+import '../utils/utils.dart';
 
 abstract class EditImageViewModel extends State<ImageEditingScreen> {
   TextEditingController textEditingController = TextEditingController();
@@ -16,15 +19,34 @@ abstract class EditImageViewModel extends State<ImageEditingScreen> {
   bool isItalic = false;
   List<TextInfo> texts = [];
 
-  saveToGallery() {
+  saveToGallery(BuildContext context) {
     if (texts.isNotEmpty) {
-      screenshotController
-          .capture()
-          .then((Uint8List? image) {})
-          .catchError((e) {
+      screenshotController.capture().then((Uint8List? image) {
+        saveImage(image!);
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text(
+              'Image saved to the gallery.',
+              style: TextStyle(
+                fontSize: 16,
+              ),
+            ),
+          ),
+        );
+      }).catchError((e) {
         debugPrint('$e');
       });
     }
+  }
+
+  saveImage(Uint8List bytes) async {
+    final time = DateTime.now()
+        .toIso8601String()
+        .replaceAll('.', '-')
+        .replaceAll(':', '-');
+    final name = 'screenshot_ $time';
+    await requestPermission(Permission.storage);
+    await ImageGallerySaver.saveImage(bytes, name: name);
   }
 
   setCurrentIndex(BuildContext context, int index) {
