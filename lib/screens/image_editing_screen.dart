@@ -21,7 +21,7 @@ class _ImageEditingScreenState extends EditImageViewModel {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: const Color.fromARGB(179, 215, 215, 215),
           automaticallyImplyLeading: false,
           title: SizedBox(
             height: 50,
@@ -100,6 +100,118 @@ class _ImageEditingScreenState extends EditImageViewModel {
                   ),
                   tooltip: 'Add New line',
                 ),
+                Tooltip(
+                  message: 'Red',
+                  child: GestureDetector(
+                    onTap: () {
+                      changeTextColor(Colors.red);
+                    },
+                    child: const CircleAvatar(
+                      backgroundColor: Colors.red,
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 5,
+                ),
+                Tooltip(
+                  message: 'Black',
+                  child: GestureDetector(
+                    onTap: () {
+                      changeTextColor(Colors.black);
+                    },
+                    child: const CircleAvatar(
+                      backgroundColor: Colors.black,
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 5,
+                ),
+                Tooltip(
+                  message: 'White',
+                  child: GestureDetector(
+                    onTap: () {
+                      changeTextColor(Colors.white);
+                    },
+                    child: const CircleAvatar(
+                      backgroundColor: Colors.white,
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 5,
+                ),
+                Tooltip(
+                  message: 'Blue',
+                  child: GestureDetector(
+                    onTap: () {
+                      changeTextColor(Colors.blue);
+                    },
+                    child: const CircleAvatar(
+                      backgroundColor: Colors.blue,
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 5,
+                ),
+                Tooltip(
+                  message: 'Yellow',
+                  child: GestureDetector(
+                    onTap: () {
+                      changeTextColor(Colors.yellow);
+                    },
+                    child: const CircleAvatar(
+                      backgroundColor: Colors.yellow,
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 5,
+                ),
+                Tooltip(
+                  message: 'Green',
+                  child: GestureDetector(
+                    onTap: () {
+                      changeTextColor(Colors.green);
+                    },
+                    child: const CircleAvatar(
+                      backgroundColor: Colors.green,
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 5,
+                ),
+                Tooltip(
+                  message: 'Orange',
+                  child: GestureDetector(
+                    onTap: () {
+                      changeTextColor(Colors.orange);
+                    },
+                    child: const CircleAvatar(
+                      backgroundColor: Colors.orange,
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 5,
+                ),
+                Tooltip(
+                  message: 'Pink',
+                  child: GestureDetector(
+                    onTap: () {
+                      changeTextColor(Colors.pink);
+                    },
+                    child: const CircleAvatar(
+                      backgroundColor: Colors.pink,
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 5,
+                ),
               ],
             ),
           ),
@@ -116,7 +228,7 @@ class _ImageEditingScreenState extends EditImageViewModel {
           ),
         ),
         body: SizedBox(
-          height: MediaQuery.of(context).size.height * 0.5,
+          height: MediaQuery.of(context).size.height * 0.6,
           // width: double.infinity,
           child: Stack(
             children: [
@@ -125,7 +237,7 @@ class _ImageEditingScreenState extends EditImageViewModel {
                   widget.selectedImagePath,
                 ),
                 width: double.infinity,
-                fit: BoxFit.fill,
+                fit: BoxFit.cover,
               ),
               for (int i = 0; i < texts.length; i++)
                 Positioned(
@@ -133,7 +245,9 @@ class _ImageEditingScreenState extends EditImageViewModel {
                   top: texts[i].top,
                   child: GestureDetector(
                     onLongPress: () {},
-                    onTap: () {},
+                    onTap: () {
+                      setCurrentIndex(context, i);
+                    },
                     child: Draggable(
                       feedback: ImageText(
                         textInfo: texts[i],
@@ -146,7 +260,7 @@ class _ImageEditingScreenState extends EditImageViewModel {
                             context.findRenderObject() as RenderBox;
                         Offset offset = renderBox.globalToLocal(drag.offset);
                         setState(() {
-                          texts[i].top = offset.dy;
+                          texts[i].top = offset.dy - 90;
                           texts[i].left = offset.dx;
                         });
                       },

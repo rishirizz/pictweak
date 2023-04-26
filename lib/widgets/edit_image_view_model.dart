@@ -7,6 +7,29 @@ import '../screens/image_editing_screen.dart';
 abstract class EditImageViewModel extends State<ImageEditingScreen> {
   TextEditingController textEditingController = TextEditingController();
   TextEditingController creatorController = TextEditingController();
+  int currentIndex = 0;
+
+  setCurrentIndex(BuildContext context, int index) {
+    setState(() {
+      currentIndex = index;
+    });
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text(
+          'Text selected for styling.',
+          style: TextStyle(
+            fontSize: 16,
+          ),
+        ),
+      ),
+    );
+  }
+
+  changeTextColor(Color color) {
+    setState(() {
+      texts[currentIndex].color = color;
+    });
+  }
 
   List<TextInfo> texts = [];
 
