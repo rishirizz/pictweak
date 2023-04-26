@@ -20,6 +20,90 @@ class _ImageEditingScreenState extends EditImageViewModel {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          automaticallyImplyLeading: false,
+          title: SizedBox(
+            height: 50,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: [
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.save,
+                    color: Colors.black,
+                  ),
+                  tooltip: 'Save',
+                ),
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.add,
+                    color: Colors.black,
+                  ),
+                  tooltip: 'Increase font size',
+                ),
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.remove,
+                    color: Colors.black,
+                  ),
+                  tooltip: 'Decrease font size',
+                ),
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.format_align_left,
+                    color: Colors.black,
+                  ),
+                  tooltip: 'Align Left',
+                ),
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.format_align_center,
+                    color: Colors.black,
+                  ),
+                  tooltip: 'Align Center',
+                ),
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.format_align_right,
+                    color: Colors.black,
+                  ),
+                  tooltip: 'Align Right',
+                ),
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.format_bold,
+                    color: Colors.black,
+                  ),
+                  tooltip: 'Bold',
+                ),
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.format_italic,
+                    color: Colors.black,
+                  ),
+                  tooltip: 'Italic',
+                ),
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.space_bar,
+                    color: Colors.black,
+                  ),
+                  tooltip: 'Add New line',
+                ),
+              ],
+            ),
+          ),
+        ),
         floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.white,
           tooltip: 'Add New Text',
