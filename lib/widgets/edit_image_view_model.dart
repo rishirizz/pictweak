@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:pictweak/models/text_info.dart';
 import 'package:pictweak/widgets/button.dart';
@@ -13,6 +15,17 @@ abstract class EditImageViewModel extends State<ImageEditingScreen> {
   bool isBold = false;
   bool isItalic = false;
   List<TextInfo> texts = [];
+
+  saveToGallery() {
+    if (texts.isNotEmpty) {
+      screenshotController
+          .capture()
+          .then((Uint8List? image) {})
+          .catchError((e) {
+        debugPrint('$e');
+      });
+    }
+  }
 
   setCurrentIndex(BuildContext context, int index) {
     setState(() {
