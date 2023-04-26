@@ -6,6 +6,8 @@ import '../screens/image_editing_screen.dart';
 
 abstract class EditImageViewModel extends State<ImageEditingScreen> {
   TextEditingController textEditingController = TextEditingController();
+  TextEditingController creatorController = TextEditingController();
+
   List<TextInfo> texts = [];
 
   addNewDialog(BuildContext context) {
