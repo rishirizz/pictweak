@@ -113,7 +113,9 @@ class _ImageEditingScreenState extends EditImageViewModel {
                   tooltip: 'Italic',
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    addLinesToText();
+                  },
                   icon: const Icon(
                     Icons.space_bar,
                     color: Colors.black,

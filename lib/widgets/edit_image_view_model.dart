@@ -78,6 +78,17 @@ abstract class EditImageViewModel extends State<ImageEditingScreen> {
     });
   }
 
+  addLinesToText() {
+    setState(() {
+      if (texts[currentIndex].text.contains('\n')) {
+        texts[currentIndex].text =
+            texts[currentIndex].text.replaceAll('\n', ' ');
+      }else {
+        texts[currentIndex].text = texts[currentIndex].text.replaceAll(' ', '\n');
+      }
+    });
+  }
+
   addNewDialog(BuildContext context) {
     showDialog(
       context: context,
