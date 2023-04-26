@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:pictweak/models/text_info.dart';
 import 'package:pictweak/widgets/button.dart';
+import 'package:screenshot/screenshot.dart';
 
 import '../screens/image_editing_screen.dart';
 
 abstract class EditImageViewModel extends State<ImageEditingScreen> {
   TextEditingController textEditingController = TextEditingController();
   TextEditingController creatorController = TextEditingController();
+  ScreenshotController screenshotController = ScreenshotController();
   int currentIndex = 0;
   bool isBold = false;
   bool isItalic = false;
@@ -83,10 +85,27 @@ abstract class EditImageViewModel extends State<ImageEditingScreen> {
       if (texts[currentIndex].text.contains('\n')) {
         texts[currentIndex].text =
             texts[currentIndex].text.replaceAll('\n', ' ');
-      }else {
-        texts[currentIndex].text = texts[currentIndex].text.replaceAll(' ', '\n');
+      } else {
+        texts[currentIndex].text =
+            texts[currentIndex].text.replaceAll(' ', '\n');
       }
     });
+  }
+
+  deleteSelectedText(BuildContext context) {
+    setState(() {
+      texts.removeAt(currentIndex);
+    });
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text(
+          'Selected text has been removed successfully.',
+          style: TextStyle(
+            fontSize: 16,
+          ),
+        ),
+      ),
+    );
   }
 
   addNewDialog(BuildContext context) {

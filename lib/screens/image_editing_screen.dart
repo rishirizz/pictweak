@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:screenshot/screenshot.dart';
 
 import '../widgets/edit_image_view_model.dart';
 import '../widgets/image_text.dart';
@@ -252,61 +253,69 @@ class _ImageEditingScreenState extends EditImageViewModel {
             color: Colors.black,
           ),
         ),
-        body: SizedBox(
-          height: MediaQuery.of(context).size.height * 0.6,
-          // width: double.infinity,
-          child: Stack(
-            children: [
-              Image.file(
-                File(
-                  widget.selectedImagePath,
+        body: Screenshot(
+          controller: screenshotController,
+          child: SizedBox(
+            height: MediaQuery.of(context).size.height * 0.6,
+            // width: double.infinity,
+            child: Stack(
+              children: [
+                Image.file(
+                  File(
+                    widget.selectedImagePath,
+                  ),
+                  width: double.infinity,
+                  fit: BoxFit.cover,
                 ),
-                width: double.infinity,
-                fit: BoxFit.cover,
-              ),
-              for (int i = 0; i < texts.length; i++)
-                Positioned(
-                  left: texts[i].left,
-                  top: texts[i].top,
-                  child: GestureDetector(
-                    onLongPress: () {},
-                    onTap: () {
-                      setCurrentIndex(context, i);
-                    },
-                    child: Draggable(
-                      feedback: ImageText(
-                        textInfo: texts[i],
-                      ),
-                      child: ImageText(
-                        textInfo: texts[i],
-                      ),
-                      onDragEnd: (drag) {
-                        final renderBox =
-                            context.findRenderObject() as RenderBox;
-                        Offset offset = renderBox.globalToLocal(drag.offset);
+                for (int i = 0; i < texts.length; i++)
+                  Positioned(
+                    left: texts[i].left,
+                    top: texts[i].top,
+                    child: GestureDetector(
+                      onLongPress: () {
                         setState(() {
-                          texts[i].top = offset.dy - 90;
-                          texts[i].left = offset.dx;
+                          currentIndex = i;
+                          deleteSelectedText(context);
                         });
                       },
+                      onTap: () {
+                        setCurrentIndex(context, i);
+                      },
+                      child: Draggable(
+                        feedback: ImageText(
+                          textInfo: texts[i],
+                        ),
+                        child: ImageText(
+                          textInfo: texts[i],
+                        ),
+                        onDragEnd: (drag) {
+                          final renderBox =
+                              context.findRenderObject() as RenderBox;
+                          Offset offset = renderBox.globalToLocal(drag.offset);
+                          setState(() {
+                            texts[i].top = offset.dy - 90;
+                            texts[i].left = offset.dx;
+                          });
+                        },
+                      ),
                     ),
                   ),
-                ),
-              creatorController.text.isNotEmpty
-                  ? Positioned(
-                      left: 0,
-                      bottom: 0,
-                      child: Text(
-                        creatorController.text,
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black.withOpacity(0.3),
+                creatorController.text.isNotEmpty
+                    ? Positioned(
+                        left: 0,
+                        bottom: 0,
+                        child: Text(
+                          creatorController.text,
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black.withOpacity(0.3),
+                          ),
                         ),
-                      ),
-                    )
-                  : const SizedBox.shrink(),
-            ],
+                      )
+                    : const SizedBox.shrink(),
+              ],
+            ),
           ),
         ),
       ),
