@@ -31,6 +31,36 @@ abstract class EditImageViewModel extends State<ImageEditingScreen> {
     });
   }
 
+  increaseFontSize() {
+    setState(() {
+      texts[currentIndex].fontSize += 2;
+    });
+  }
+
+  decreaseFontSize() {
+    setState(() {
+      texts[currentIndex].fontSize -= 2;
+    });
+  }
+
+  alignLeft() {
+    setState(() {
+      texts[currentIndex].textAlign = TextAlign.left;
+    });
+  }
+
+  alignCenter() {
+    setState(() {
+      texts[currentIndex].textAlign = TextAlign.center;
+    });
+  }
+
+  alignRight() {
+    setState(() {
+      texts[currentIndex].fontSize -= 2;
+    });
+  }
+
   List<TextInfo> texts = [];
 
   addNewDialog(BuildContext context) {

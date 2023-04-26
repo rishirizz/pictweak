@@ -37,7 +37,9 @@ class _ImageEditingScreenState extends EditImageViewModel {
                   tooltip: 'Save',
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    increaseFontSize();
+                  },
                   icon: const Icon(
                     Icons.add,
                     color: Colors.black,
@@ -45,7 +47,9 @@ class _ImageEditingScreenState extends EditImageViewModel {
                   tooltip: 'Increase font size',
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    decreaseFontSize();
+                  },
                   icon: const Icon(
                     Icons.remove,
                     color: Colors.black,
@@ -53,7 +57,9 @@ class _ImageEditingScreenState extends EditImageViewModel {
                   tooltip: 'Decrease font size',
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    alignLeft();
+                  },
                   icon: const Icon(
                     Icons.format_align_left,
                     color: Colors.black,
@@ -61,7 +67,9 @@ class _ImageEditingScreenState extends EditImageViewModel {
                   tooltip: 'Align Left',
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    alignCenter();
+                  },
                   icon: const Icon(
                     Icons.format_align_center,
                     color: Colors.black,
@@ -69,7 +77,9 @@ class _ImageEditingScreenState extends EditImageViewModel {
                   tooltip: 'Align Center',
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    alignRight();
+                  },
                   icon: const Icon(
                     Icons.format_align_right,
                     color: Colors.black,
