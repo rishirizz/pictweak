@@ -87,7 +87,12 @@ class _ImageEditingScreenState extends EditImageViewModel {
                   tooltip: 'Align Right',
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {
+                      isBold = !isBold;
+                    });
+                    boldText();
+                  },
                   icon: const Icon(
                     Icons.format_bold,
                     color: Colors.black,
@@ -95,7 +100,12 @@ class _ImageEditingScreenState extends EditImageViewModel {
                   tooltip: 'Bold',
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {
+                      isItalic = !isItalic;
+                    });
+                    italiciseText();
+                  },
                   icon: const Icon(
                     Icons.format_italic,
                     color: Colors.black,
@@ -109,6 +119,9 @@ class _ImageEditingScreenState extends EditImageViewModel {
                     color: Colors.black,
                   ),
                   tooltip: 'Add New line',
+                ),
+                const SizedBox(
+                  width: 5,
                 ),
                 Tooltip(
                   message: 'Red',

@@ -8,6 +8,9 @@ abstract class EditImageViewModel extends State<ImageEditingScreen> {
   TextEditingController textEditingController = TextEditingController();
   TextEditingController creatorController = TextEditingController();
   int currentIndex = 0;
+  bool isBold = false;
+  bool isItalic = false;
+  List<TextInfo> texts = [];
 
   setCurrentIndex(BuildContext context, int index) {
     setState(() {
@@ -61,7 +64,19 @@ abstract class EditImageViewModel extends State<ImageEditingScreen> {
     });
   }
 
-  List<TextInfo> texts = [];
+  boldText() {
+    setState(() {
+      texts[currentIndex].fontWeight =
+          (isBold) ? FontWeight.bold : FontWeight.normal;
+    });
+  }
+
+  italiciseText() {
+    setState(() {
+      texts[currentIndex].fontStyle =
+          (isItalic) ? FontStyle.italic : FontStyle.normal;
+    });
+  }
 
   addNewDialog(BuildContext context) {
     showDialog(
