@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:lottie/lottie.dart';
 import 'package:pictweak/screens/image_editing_screen.dart';
 
 class HomePage extends StatefulWidget {
@@ -16,25 +17,31 @@ class _HomePageState extends State<HomePage> {
     return SafeArea(
       child: Scaffold(
         body: Center(
-          child: IconButton(
-            onPressed: () async {
-              await imagePicker
-                  .pickImage(
-                source: ImageSource.gallery,
-              )
-                  .then((value) {
-                if (value != null) {
-                  Navigator.pushNamed(
-                    context,
-                    ImageEditingScreen.routeName,
-                    arguments: value.path,
-                  );
-                }
-              });
-            },
-            icon: const Icon(
-              Icons.upload_file,
-            ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Lottie.asset('assets/open.json'),
+              IconButton(
+                onPressed: () async {
+                  await imagePicker
+                      .pickImage(
+                    source: ImageSource.gallery,
+                  )
+                      .then((value) {
+                    if (value != null) {
+                      Navigator.pushNamed(
+                        context,
+                        ImageEditingScreen.routeName,
+                        arguments: value.path,
+                      );
+                    }
+                  });
+                },
+                icon: const Icon(
+                  Icons.upload_file,
+                ),
+              ),
+            ],
           ),
         ),
       ),
