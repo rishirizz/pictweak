@@ -131,119 +131,7 @@ class _ImageEditingScreenState extends EditImageViewModel {
                   width: 5,
                 ),
                 Tooltip(
-                  message: 'Red',
-                  child: GestureDetector(
-                    onTap: () {
-                      changeTextColor(Colors.red);
-                    },
-                    child: const CircleAvatar(
-                      backgroundColor: Colors.red,
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  width: 5,
-                ),
-                Tooltip(
-                  message: 'Black',
-                  child: GestureDetector(
-                    onTap: () {
-                      changeTextColor(Colors.black);
-                    },
-                    child: const CircleAvatar(
-                      backgroundColor: Colors.black,
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  width: 5,
-                ),
-                Tooltip(
-                  message: 'White',
-                  child: GestureDetector(
-                    onTap: () {
-                      changeTextColor(Colors.white);
-                    },
-                    child: const CircleAvatar(
-                      backgroundColor: Colors.white,
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  width: 5,
-                ),
-                Tooltip(
-                  message: 'Blue',
-                  child: GestureDetector(
-                    onTap: () {
-                      changeTextColor(Colors.blue);
-                    },
-                    child: const CircleAvatar(
-                      backgroundColor: Colors.blue,
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  width: 5,
-                ),
-                Tooltip(
-                  message: 'Yellow',
-                  child: GestureDetector(
-                    onTap: () {
-                      changeTextColor(Colors.yellow);
-                    },
-                    child: const CircleAvatar(
-                      backgroundColor: Colors.yellow,
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  width: 5,
-                ),
-                Tooltip(
-                  message: 'Green',
-                  child: GestureDetector(
-                    onTap: () {
-                      changeTextColor(Colors.green);
-                    },
-                    child: const CircleAvatar(
-                      backgroundColor: Colors.green,
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  width: 5,
-                ),
-                Tooltip(
-                  message: 'Orange',
-                  child: GestureDetector(
-                    onTap: () {
-                      changeTextColor(Colors.orange);
-                    },
-                    child: const CircleAvatar(
-                      backgroundColor: Colors.orange,
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  width: 5,
-                ),
-                Tooltip(
-                  message: 'Pink',
-                  child: GestureDetector(
-                    onTap: () {
-                      changeTextColor(Colors.pink);
-                    },
-                    child: const CircleAvatar(
-                      backgroundColor: Colors.pink,
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  width: 5,
-                ),
-                Tooltip(
-                  message: 'Pink',
+                  message: 'Pick a Color',
                   child: GestureDetector(
                     onTap: () async {
                       await showDialog(
@@ -276,8 +164,9 @@ class _ImageEditingScreenState extends EditImageViewModel {
                           });
                       changeTextColor(mycolor);
                     },
-                    child: const CircleAvatar(
-                      backgroundColor: Colors.pink,
+                    child: CircleAvatar(
+                      backgroundColor: mycolor,
+                      radius: 15,
                     ),
                   ),
                 ),
