@@ -20,7 +20,6 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Lottie.asset('assets/open.json'),
               IconButton(
                 onPressed: () async {
                   await imagePicker
@@ -39,6 +38,7 @@ class _HomePageState extends State<HomePage> {
                 },
                 icon: const Icon(
                   Icons.upload_file,
+                  size: 40,
                 ),
               ),
             ],

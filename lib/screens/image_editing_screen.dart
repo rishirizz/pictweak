@@ -244,13 +244,14 @@ class _ImageEditingScreenState extends EditImageViewModel {
             ),
           ),
         ),
-        floatingActionButton: FloatingActionButton(
+        floatingActionButton: FloatingActionButton.extended(
+          label: const Text('Add new text'),
           backgroundColor: Colors.white,
           tooltip: 'Add New Text',
           onPressed: () {
             addNewDialog(context);
           },
-          child: const Icon(
+          icon: const Icon(
             Icons.edit,
             color: Colors.black,
           ),
