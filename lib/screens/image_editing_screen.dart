@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:screenshot/screenshot.dart';
 
+import '../textstyles/textstyles.dart';
 import '../widgets/edit_image_view_model.dart';
 import '../widgets/image_text.dart';
 
@@ -245,7 +246,10 @@ class _ImageEditingScreenState extends EditImageViewModel {
           ),
         ),
         floatingActionButton: FloatingActionButton.extended(
-          label: const Text('Add new text'),
+          label: Text(
+            'Add New text',
+            style: floatingActionButtonTextStyle(context),
+          ),
           backgroundColor: Colors.white,
           tooltip: 'Add New Text',
           onPressed: () {
@@ -260,7 +264,6 @@ class _ImageEditingScreenState extends EditImageViewModel {
           controller: screenshotController,
           child: SizedBox(
             height: MediaQuery.of(context).size.height * 0.6,
-            // width: double.infinity,
             child: Stack(
               children: [
                 Image.file(
@@ -268,19 +271,20 @@ class _ImageEditingScreenState extends EditImageViewModel {
                     widget.selectedImagePath,
                   ),
                   width: double.infinity,
-                  fit: BoxFit.cover,
+                  fit: BoxFit.contain,
+                  filterQuality: FilterQuality.high,
                 ),
                 for (int i = 0; i < texts.length; i++)
                   Positioned(
                     left: texts[i].left,
                     top: texts[i].top,
                     child: GestureDetector(
-                      onLongPress: () {
-                        setState(() {
-                          currentIndex = i;
-                          deleteSelectedText(context);
-                        });
-                      },
+                      // onLongPress: () {
+                      //   setState(() {
+                      //     currentIndex = i;
+                      //     deleteSelectedText(context);
+                      //   });
+                      // },
                       onTap: () {
                         setCurrentIndex(context, i);
                       },

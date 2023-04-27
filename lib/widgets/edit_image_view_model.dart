@@ -97,7 +97,7 @@ abstract class EditImageViewModel extends State<ImageEditingScreen> {
 
   alignRight() {
     setState(() {
-      texts[currentIndex].fontSize -= 2;
+      texts[currentIndex].textAlign = TextAlign.right;
     });
   }
 

@@ -3,6 +3,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:lottie/lottie.dart';
 import 'package:pictweak/screens/image_editing_screen.dart';
 
+import '../textstyles/textstyles.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -38,8 +40,16 @@ class _HomePageState extends State<HomePage> {
                 },
                 icon: const Icon(
                   Icons.upload_file,
-                  size: 40,
+                  size: 60,
                 ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Text(
+                'Select an Image from the Gallery.',
+                style: headerTextStyle(context),
+                textAlign: TextAlign.center,
               ),
             ],
           ),
