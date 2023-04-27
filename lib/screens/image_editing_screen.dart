@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:screenshot/screenshot.dart';
 
 import '../textstyles/textstyles.dart';
@@ -240,6 +241,45 @@ class _ImageEditingScreenState extends EditImageViewModel {
                 ),
                 const SizedBox(
                   width: 5,
+                ),
+                Tooltip(
+                  message: 'Pink',
+                  child: GestureDetector(
+                    onTap: () async {
+                      await showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: Text(
+                                'Pick a color!',
+                                style: primaryTextStyle(context),
+                              ),
+                              content: SingleChildScrollView(
+                                child: ColorPicker(
+                                  pickerColor: mycolor,
+                                  onColorChanged: (Color color) {
+                                    setState(() {
+                                      mycolor = color;
+                                    });
+                                  },
+                                ),
+                              ),
+                              actions: <Widget>[
+                                ElevatedButton(
+                                  child: const Text('DONE'),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                ),
+                              ],
+                            );
+                          });
+                      changeTextColor(mycolor);
+                    },
+                    child: const CircleAvatar(
+                      backgroundColor: Colors.pink,
+                    ),
+                  ),
                 ),
               ],
             ),

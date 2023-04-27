@@ -18,6 +18,7 @@ abstract class EditImageViewModel extends State<ImageEditingScreen> {
   bool isBold = false;
   bool isItalic = false;
   List<TextInfo> texts = [];
+  Color mycolor = Colors.black;
 
   saveToGallery(BuildContext context) {
     if (texts.isNotEmpty) {
