@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:lottie/lottie.dart';
 import 'package:pictweak/screens/image_editing_screen.dart';
 
 import '../textstyles/textstyles.dart';
@@ -34,6 +33,7 @@ class _HomePageState extends State<HomePage> {
                         context,
                         ImageEditingScreen.routeName,
                         arguments: value.path,
+                        
                       );
                     }
                   });
