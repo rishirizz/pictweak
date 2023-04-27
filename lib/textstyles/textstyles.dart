@@ -20,6 +20,6 @@ TextStyle primaryTextStyle(BuildContext context) {
 
 TextStyle floatingActionButtonTextStyle(BuildContext context) {
   return GoogleFonts.openSans(
-    fontSize: 24 * getTextScaleFactor(context),
+    fontSize: 20 * getTextScaleFactor(context),
   );
 }

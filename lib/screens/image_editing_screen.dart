@@ -263,7 +263,8 @@ class _ImageEditingScreenState extends EditImageViewModel {
         body: Screenshot(
           controller: screenshotController,
           child: SizedBox(
-            height: MediaQuery.of(context).size.height * 0.6,
+            height: MediaQuery.of(context).size.height * 0.7,
+            width: double.infinity,
             child: Stack(
               children: [
                 Image.file(
